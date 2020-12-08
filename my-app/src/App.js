@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react"
-import axios from 'axios'
+import React from 'react';
+import './App.css';
 
-const App = () => {
-    const [users, setUsers] = useState([]);
+// import Pages
+import Global from './containers/Global/Global'
 
-    useEffect(() => {
-      axios
-        .get("https://jsonplaceholder.typicode.com/users")
-        .then((response) => setUsers(response.data));
-    }, []);
-    console.log(users);
-    return (
-      <>
-        <p>App Component</p>
-      </>
-    );
-};
+
+function App()  {
+  return (
+    <div>
+        <Global/>
+    </div>
+  );
+}
 
 export default App;
