@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Switch, Link, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap';
 
 // import Pages
 import Global from './containers/page/Global'
 import Indo from './containers/page/Indo'
+import prov from './prov'
 
 
 const App = () => {
@@ -25,9 +26,8 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Global} />
         <Route path='/indonesia' component={Indo} />
-        {/* <Route path='/provinsi' component={provinsi} /> */}
+        <Route path='/provinsi' component={prov} />
       </Switch>
-      {/* <Global /> */}
     </div>
   );
 }
