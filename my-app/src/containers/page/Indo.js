@@ -7,7 +7,7 @@ import NumberFormat from 'react-number-format';
 //import Components
 import WorldStats from '../../components/WorldStats/WorldStats'
 
-export default class Global extends Component {
+export default class Indo extends Component {
 
     state = {
 
@@ -20,23 +20,22 @@ export default class Global extends Component {
     }
 
     async componentDidMount() {
-        var globalData = await axios.get("https://api.covid19api.com/summary");
-
-        let corona = globalData.data.Global
+        const indoData = await axios.get("https://indonesia-covid-19.mathdro.id/api")
+        let corona = indoData.data
 
         this.setState({
             result: {
-                "Confirmed": corona.TotalConfirmed,
-                "Deaths":corona.TotalDeaths,
-                "Recovered":corona.TotalRecovered,
-                "Active Case": corona.TotalConfirmed - (corona.TotalRecovered + corona.TotalDeaths)
+                "Confirmed": corona.jumlahKasus,
+                "Deaths":corona.meninggal,
+                "Recovered":corona.sembuh,
+                "ActiveCase": corona.jumlahKasus - (corona.sembuh + corona.meninggal)
             }
         })
     }
 
     render() {
 
-        var Stats = Object.keys(this.state.result).map((key, index) => {
+        const Stats = Object.keys(this.state.result).map((key, index) => {
             return <WorldStats 
                         key={index}
                         about={key}
